@@ -13,7 +13,7 @@ export class HomePage {
 
   public registationForm: FormGroup; imgPreview; showDetails: boolean = false; userDetail; imageSet: boolean = false;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private camera: Camera, private imageProvider: ImageProvider, private webService: WebServiceProvider, private alert:AlertControlProvider) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private camera: Camera, private imageProvider: ImageProvider, private webService: WebServiceProvider, private alert: AlertControlProvider) {
     this.registationForm = this.formBuilder.group({
       'userName': ['', Validators.required],
       'userEmail': ['', Validators.required],
@@ -39,7 +39,6 @@ export class HomePage {
           handler: () => {
             // Call imageProvider to process, upload, and update user photo.
             this.imageProvider.setProfilePhoto('', this.camera.PictureSourceType.PHOTOLIBRARY).then(data => {
-              // this.userDetail.image = data;
               this.imgPreview = data;
               this.imageSet = true;
             });
@@ -50,7 +49,6 @@ export class HomePage {
           handler: () => {
             // Call imageProvider to process, upload, and update user photo.
             this.imageProvider.setProfilePhoto('', this.camera.PictureSourceType.CAMERA).then(data => {
-              // this.userDetail.image = data;
               this.imgPreview = data;
               this.imageSet = true;
             });
@@ -61,7 +59,6 @@ export class HomePage {
   }
 
   onSubmit() {
-    console.log("Form value", this.registationForm, this.registationForm.valid)
     let data: any = {};
     if (this.registationForm.valid) {
       data.userEmail = this.registationForm.value.userEmail;
@@ -75,42 +72,30 @@ export class HomePage {
         this.registationForm.reset();
         this.alert.showAlert(res.body);
         this.navCtrl.setRoot('LoginPage');
-        // this.imgPreview = "/assets/imgs/logo.png";
-        // console.log(res.data._id);
-        // this.getUserDetail(res.data._id);
       }).catch((err) => {
         this.alert.showErrorAlert(err);
       })
     }
-    else{
+    else {
       this.alert.showAlert("Please fill the required details.")
     }
   }
 
-  // getUserDetail(data){
-  //   this.webService.callGet('getDetail', data).then((res:any) => {
-  //     this.showDetails = true;
-  //     this.userDetail = res.body;
-  //   }).catch((err) => {
-  //     console.log("gor error from get", err);
-  //   })
-  // }
   goToLogin() {
     localStorage.removeItem('userId');
     this.navCtrl.setRoot("LoginPage");
   }
-  checkEmailExist(event){
-    if(event){
-      let data ={
-        email : this.registationForm.controls['userEmail'].value
+  checkEmailExist(event) {
+    if (event) {
+      let data = {
+        email: this.registationForm.controls['userEmail'].value
       }
-      this.webService.callPost('checkUserExist', data).then((res:any) =>{
-        console.log("response is", res);
-        if(res.isexist){
+      this.webService.callPost('checkUserExist', data).then((res: any) => {
+        if (res.isexist) {
           this.alert.showAlert("The user with this emailId is already exists. Please try with other email.");
           this.registationForm.controls['userEmail'].reset();
         }
-      }).catch(err => { console.log(err) })
+      }).catch(err => { this.alert.showErrorAlert(err); })
     }
   }
 }

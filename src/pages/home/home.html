@@ -13,40 +13,6 @@
           <ion-label>Your name:</ion-label><br>
           <ion-input formControlName="userName" type="text"></ion-input>
         </ion-item>
-        <!-- <ion-list radio-group formControlName="userGender">
-          <ion-label>Your Gender:</ion-label>
-          
-            <ion-label>Male</ion-label>
-            <ion-radio value="male"></ion-radio>
-            <ion-label>Female</ion-label>
-            <ion-radio value="female"></ion-radio> -->
-          
-          <!-- <ion-item>
-            <ion-label>Female</ion-label>
-            <ion-radio value="female"></ion-radio>
-          </ion-item> -->
-        <!-- </ion-list> -->
-        <!-- <ion-list radio-group> -->
-          <!-- <ion-row>
-            <ion-col col-4>
-                <ion-item class="genderBox">
-                  <ion-label>Your gender:</ion-label>
-                </ion-item>
-            </ion-col>
-            <ion-col col-4>
-                <ion-item class="order-item">
-                  <ion-radio value="Male" (ionSelect)="selectedGroup('Male')"></ion-radio>
-                  <ion-label>Male</ion-label>
-                </ion-item>
-            </ion-col>
-            <ion-col col-4>
-                <ion-item class="order-item">
-                  <ion-radio value="Female" (ionSelect)="selectedGroup('Female')"></ion-radio>
-                  <ion-label>Female</ion-label>
-                </ion-item>
-            </ion-col>
-          </ion-row> -->
-        <!-- </ion-list> -->
         <ion-item>
             <ion-label>Your gender:</ion-label>
             <ion-select formControlName="userGender">
@@ -62,17 +28,10 @@
             <ion-option value="monsoon">Monsoon</ion-option>
           </ion-select>
         </ion-item>
-         <!-- <ion-label>Your name:</ion-label> -->
-          <!-- <ion-input  formControlName="userName"></ion-input> --> 
+       
           <user-email [parentForm]="registationForm" formControlNameValue="userEmail" (isExist)="checkEmailExist($event)"></user-email>
-        
-          <!-- <ion-label>Your password:</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input> -->
           <user-password [parentForm]="registationForm" formControlNameValue="userPassword"></user-password>
        
-       
-          <!-- <ion-label>Your Profile picture:</ion-label> -->
-          <!-- <ion-avatar> -->
             <ion-row>
               <ion-col style="float: left; font-size: 16px; margin-left: 15px;"> Your Profile picture: </ion-col>
               <ion-col style="float: right;">
@@ -84,7 +43,6 @@
               <button ion-button (click)="onSubmit()">SignUp</button>
               <button ion-button (click)="goToLogin()">Login</button>
             </div>               
-          <!-- </ion-avatar> -->
       </ion-list>        
   </form>
 </ion-content>

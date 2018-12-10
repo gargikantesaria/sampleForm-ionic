@@ -13,20 +13,15 @@ export class ImageProvider {
     mediaType: this.camera.MediaType.PICTURE
   }
   
-  constructor(private camera: Camera) {
-    console.log('Hello ImageProvider Provider');
-  }
+  constructor(private camera: Camera) {}
 
   setProfilePhoto(name, sourceType): Promise<any>{
     return new Promise((resolve, reject) => {
       this.options.sourceType = sourceType;
       this.camera.getPicture(this.options).then((res) => {
-        console.log("response from camera is", res);
         let base64Image = 'data:image/jpeg;base64,' + res;
-        //let base64Image = res;
         resolve(base64Image);
       }).catch((err) => {
-        console.log("error is", err);
         reject(err);
       })
     })

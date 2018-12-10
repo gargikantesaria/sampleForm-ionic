@@ -6,9 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WebServiceProvider {
 
-  constructor(public http: Http, private loadingCtrl:LoadingController) {
-    console.log('Hello WebServiceProvider Provider');
-  }
+  constructor(public http: Http, private loadingCtrl:LoadingController) {}
   
   callPost(url,data){
     var headers = new Headers();

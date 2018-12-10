@@ -1,0 +1,6 @@
+<ion-item [formGroup]="parentForm">
+    <ion-label>Your email:</ion-label>
+    <ion-input formControlName={{formControlNameValue}} type="email" (ionBlur)="elementChanged($event)"></ion-input>
+</ion-item>
+
+<p *ngIf="!isValid && isTouched" style="color:red;">Please enter valid email.</p>

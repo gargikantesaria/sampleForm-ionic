@@ -6,6 +6,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ComponentsModule } from '../components/components.module';
+import { ImageProvider } from '../providers/image/image';
+import { Camera } from '@ionic-native/camera';
+import { WebServiceProvider } from '../providers/web-service/web-service';
+import { HttpModule } from '@angular/http';
+import { AlertControlProvider } from '../providers/alert-control/alert-control';
 
 @NgModule({
   declarations: [
@@ -13,8 +19,8 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
+    BrowserModule,HttpModule,
+    IonicModule.forRoot(MyApp), ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -23,8 +29,12 @@ import { HomePage } from '../pages/home/home';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    SplashScreen, Camera, HttpModule,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ImageProvider,
+    WebServiceProvider,
+    AlertControlProvider
+  ], 
+  exports:[ComponentsModule]
 })
 export class AppModule {}

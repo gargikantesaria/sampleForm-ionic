@@ -1,0 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="loginForm">
+    <user-email [parentForm]="loginForm" formControlNameValue="userEmail"></user-email>
+    <user-password [parentForm]="loginForm" formControlNameValue="userPassword"></user-password>
+  </form>
+  <br><br>
+  <div style="margin-left: 80px; margin-right: 80px;">
+    <button ion-button (click)="goToDetail()">My details</button>
+    <button ion-button (click)="goToSignUp()">SignUp</button>
+  </div>
+  </ion-content>

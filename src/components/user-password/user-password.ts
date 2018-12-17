@@ -15,7 +15,6 @@ export class UserPasswordComponent {
   constructor() { }
 
   elementChanged(event){
-    console.log("event we got is", event._value);
     if(event){
       let test = this.test(event._value);
       this.isValid = test;

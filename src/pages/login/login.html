@@ -9,12 +9,17 @@
 
 <ion-content padding>
   <form [formGroup]="loginForm">
-    <user-email [parentForm]="loginForm" formControlNameValue="userEmail"></user-email>
-    <user-password [parentForm]="loginForm" formControlNameValue="userPassword"></user-password>
+    <div style="border: 1px solid #488aff !important; width: 100% !important; margin: 10px 10px !important;">
+      <user-email [parentForm]="loginForm" formControlNameValue="userEmail"></user-email>
+    </div>
+    <div style="border: 1px solid #488aff !important; width: 100% !important; margin: 10px 10px !important;"> 
+      <user-password [parentForm]="loginForm" formControlNameValue="userPassword"></user-password>
+    </div>
   </form>
   <br><br>
   <div style="margin-left: 80px; margin-right: 80px;">
     <button ion-button (click)="goToDetail()">My details</button>
     <button ion-button (click)="goToSignUp()">SignUp</button>
+    <button ion-button (click)="forgotPassword()">Forgot Password ? </button>
   </div>
   </ion-content>

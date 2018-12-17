@@ -39,4 +39,7 @@ export class LoginPage {
     this.navCtrl.setRoot(HomePage);
   }
 
+  forgotPassword(){
+    this.navCtrl.push('ForgotPasswordPage');
+  }
 }

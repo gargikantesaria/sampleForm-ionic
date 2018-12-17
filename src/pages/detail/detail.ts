@@ -20,12 +20,14 @@ export class DetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private webServiceProvider: WebServiceProvider, private formBuilder: FormBuilder, private alertCtrl: AlertController, private imageProvider: ImageProvider, private camera: Camera, private alert: AlertControlProvider) {
     this.editUserForm = this.formBuilder.group({
       'userName': ['', Validators.required],
+      'userMobile': ['', Validators.required],
       'userEmail': ['', Validators.required],
       'userpicture': [''],
       'userGender': ['female', Validators.required],
       'seasons': ['summer', Validators.required],
     })
     this.editUserForm.controls['userEmail'].disable();
+    this.editUserForm.controls['userMobile'].disable();
     this.imgPreview = "/assets/imgs/logo.png";
   }
 
@@ -40,7 +42,8 @@ export class DetailPage {
         'userEmail': ((this.userDetail.userEmail ? this.userDetail.userEmail : '')),
         'userpicture': (this.userDetail.userpicture ? this.userDetail.userpicture : null),
         'userGender': (this.userDetail.userGender ? this.userDetail.userGender : 'female'),
-        'seasons': (this.userDetail.seasons ? this.userDetail.seasons : 'monsoon')
+        'seasons': (this.userDetail.seasons ? this.userDetail.seasons : 'monsoon'),
+        'userMobile' : (this.userDetail.userMobile ? this.userDetail.userMobile : '')
       });
     }).catch((err) => {
       this.alert.showErrorAlert(err);

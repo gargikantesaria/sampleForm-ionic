@@ -33,7 +33,7 @@ import { AlertControlProvider } from '../providers/alert-control/alert-control';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ImageProvider,
     WebServiceProvider,
-    AlertControlProvider
+    AlertControlProvider,
   ], 
   exports:[ComponentsModule]
 })

@@ -10,18 +10,22 @@
 <ion-content padding>
   <form [formGroup]="editUserForm">
       <ion-list>
-        <ion-item>
+        <ion-item style="border: 1px solid #488aff; margin:10px !important">
           <ion-label>Your name:</ion-label><br>
           <ion-input formControlName="userName" type="text"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item style="border: 1px solid #488aff; margin:10px !important">
+          <ion-label>Your phone number:</ion-label>
+          <ion-input formControlName="userMobile" type="tel" (ionBlur)="checkMobile($event)" placeholder="+91"></ion-input>
+        </ion-item>
+        <ion-item style="border: 1px solid #488aff; margin:10px !important">
             <ion-label>Your gender:</ion-label>
             <ion-select formControlName="userGender">
               <ion-option value="female">Female</ion-option>
               <ion-option value="male">Male</ion-option>
             </ion-select>
         </ion-item>
-        <ion-item>
+        <ion-item style="border: 1px solid #488aff; margin:10px !important">
           <ion-label>Your favourite season:</ion-label>
           <ion-select formControlName="seasons">
             <ion-option value="winter">Winter</ion-option>
@@ -29,9 +33,11 @@
             <ion-option value="monsoon">Monsoon</ion-option>
           </ion-select>
         </ion-item>
+        <div style="border: 1px solid #488aff !important; width: 100% !important; margin: 0px 10px !important;">
           <user-email [parentForm]="editUserForm" formControlNameValue="userEmail"></user-email>
-            <ion-row>
-              <ion-col style="float: left; font-size: 16px; margin-left: 15px;"> Your Profile picture: </ion-col>
+        </div>
+            <ion-row style="border: 1px solid #488aff !important; margin:10px !important; padding: 10px !important; width: 100% !important;">
+              <ion-col style="float: left; font-size: 16px;"> Your Profile picture: </ion-col>
               <ion-col style="float: right;">
                 <img src="{{ this.userDetail?.userpicture }}" (click)="getPhoto()" width="50" style="float:right; border-radius: 100%;">
               </ion-col>              

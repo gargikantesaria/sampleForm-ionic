@@ -5,17 +5,19 @@ import { Camera } from '@ionic-native/camera';
 import { ImageProvider } from '../../providers/image/image';
 import { WebServiceProvider } from '../../providers/web-service/web-service';
 import { AlertControlProvider } from '../../providers/alert-control/alert-control';
+import PhoneNumber from 'awesome-phonenumber';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  public registationForm: FormGroup; imgPreview; showDetails: boolean = false; userDetail; imageSet: boolean = false;
+  public registationForm: FormGroup; imgPreview; showDetails: boolean = false; userDetail; imageSet: boolean = false; phoneError:boolean = false;
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private camera: Camera, private imageProvider: ImageProvider, private webService: WebServiceProvider, private alert: AlertControlProvider) {
     this.registationForm = this.formBuilder.group({
       'userName': ['', Validators.required],
+      'userMobile': ['', Validators.required],
       'userEmail': ['', Validators.required],
       'userPassword': ['', Validators.required],
       'userpicture': [''],
@@ -66,6 +68,7 @@ export class HomePage {
       data.userName = this.registationForm.value.userName;
       data.userGender = this.registationForm.value.userGender;
       data.seasons = this.registationForm.value.seasons;
+      data.userMobile = this.registationForm.value.userMobile;
       (this.imageSet) ? data.userpicture = this.imgPreview : null;
 
       this.webService.callPost('addDetails', data).then((res: any) => {
@@ -96,6 +99,14 @@ export class HomePage {
           this.registationForm.controls['userEmail'].reset();
         }
       }).catch(err => { this.alert.showErrorAlert(err); })
+    }
+  }
+  checkMobile(userMobile){
+    const pn = new PhoneNumber(userMobile.value);
+    if ((pn.isValid() && pn.isMobile()) && userMobile.value.length > 0) {
+      this.phoneError = false; 
+    } else {
+      this.phoneError = true;
     }
   }
 }

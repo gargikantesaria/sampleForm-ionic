@@ -13,11 +13,11 @@
           <ion-label>Your name:</ion-label>
           <ion-input formControlName="userName" type="text"></ion-input>
         </ion-item>
-        <ion-item style="border: 1px solid #488aff; margin:10px !important">
+        <ion-item style="border: 1px solid #488aff !important; margin:10px !important">
           <ion-label>Your phone number:</ion-label>
           <ion-input formControlName="userMobile" type="tel" (ionBlur)="checkMobile($event)" placeholder="+91"></ion-input>
         </ion-item>
-        <p *ngIf="phoneError" style="color: red">Please enter valid mobile number with country code.</p>
+        <p *ngIf="phoneError" class="error-msg">Please enter valid mobile number with country code.</p>
         <ion-item style="border: 1px solid #488aff !important; margin:10px !important">
             <ion-label>Your gender:</ion-label>
             <ion-select formControlName="userGender">

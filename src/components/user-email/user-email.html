@@ -3,4 +3,4 @@
     <ion-input formControlName={{formControlNameValue}} type="email" (ionBlur)="elementChanged($event)"></ion-input>
 </ion-item>
 
-<p *ngIf="!isValid && isTouched" style="color:red;">Please enter valid email.</p>
+<p *ngIf="!isValid && isTouched" class="error-msg">Please enter valid email.</p>
